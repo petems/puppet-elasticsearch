@@ -1,0 +1,27 @@
+box: wercker-labs/docker
+build:
+  steps:
+    - install-packages:
+        packages: ruby2.0 ruby2.0-dev lxc-docker=1.2.0
+    - script:
+        name: print the docker version
+        code: docker version
+    - script:
+        name: print system-wide docker info
+        code: docker info
+    - script:
+        name: print the ruby version
+        code: ruby --version
+    - script:
+        name: install bundler
+        code: sudo gem install bundler
+    - script:
+        name: print bundler version
+        code: bundle --version
+    - script:
+        name: bundle install beaker gemfile
+        code: BUNDLE_GEMFILE=.gemfiles/Gemfile.beaker bundle install
+    - script:
+        name: run the test suite
+        code: |
+          BUNDLE_GEMFILE=.gemfiles/Gemfile.beaker BEAKER_set=centos-6-x64 bundle exec rspec spec/acceptance/
