@@ -22,6 +22,6 @@ build:
         name: bundle install beaker gemfile
         code: BUNDLE_GEMFILE=.gemfiles/Gemfile.beaker bundle install
     - script:
-        name: run the test suite
+        name: run the beaker test suite
         code: |
           BUNDLE_GEMFILE=.gemfiles/Gemfile.beaker BEAKER_set=centos-6-x64 bundle exec rspec spec/acceptance/
