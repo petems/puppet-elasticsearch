@@ -24,4 +24,4 @@ build:
     - script:
         name: run the beaker test suite
         code: |
-          BUNDLE_GEMFILE=.gemfiles/Gemfile.beaker BEAKER_set=centos-6-x64 bundle exec rspec spec/acceptance/
+          PUPPET_VERSION="~> 3.6.0" BUNDLE_GEMFILE=.gemfiles/Gemfile.beaker BEAKER_set=centos-6-x64 bundle exec rspec spec/acceptance/
